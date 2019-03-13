@@ -1,0 +1,194 @@
+<html>
+
+<head>
+    <title>Snap & Translate</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-qriously@1.1.1/dist/vue-qriously.min.js"></script>
+    <link href="https://bootswatch.com/4/minty/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <div class="container">
+        <div id="app">
+            <div class="row">
+                <div class="col-sm-12">
+                <h2> <img src="ibmDeveloper.jpg" width="50" alt="IBM Developer" />
+                    Watson Lanuage Translator
+                </h2>
+                日本語のテキストが入ったファイルを各国語に翻訳します。<br/>
+                翻訳結果はIBM Cloud上のCloudant DBとIBM Cloud Object Storageに保存されます。
+
+                </div>
+            </div>
+
+            
+
+            
+            <div class="row">
+
+
+                <div class="form-group">
+
+                    <input type="file" @change="onFileChange" class="form-control-file" name="inputFile" accept="text/plain"
+                        aria-describedby="fileHelp">
+                    <small id="fileHelp" class="form-text text-muted">上のボタンをクリックして翻訳したいファイルを選んでください。</small>
+
+                </div>
+            </div>
+            
+
+            <div class="row">
+
+                <button type="button" @click="onTranslation" class="btn btn-primary">翻訳ファイル作成</button>
+
+
+            </div>
+
+
+            <div class="row">
+                <div class="col-sm-5" v-show="loadingTranslation">
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped  bg-danger progress-bar-animated" role="progressbar"
+                            aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                            Loading......
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <div v-show="!loadingTranslation && displayResults1">
+
+                    <p v-show="isError"> 
+                        <span v-html="errorMessage"></span>    
+                    </p>
+
+                    <p v-show="displayResults1 && !isError">
+                        <div class="list-group" >                   
+                            <a href="#1" class="list-group-item list-group-item-action active" v-show="displayResults1 && !isError" >
+                                翻訳されたテキスト
+                            </a>
+                            <p class="list-group-item" v-show="displayResults1 && !isError">
+                                <a v-bind:href="answerTranslation.fileurl">{{ answerTranslation.fileurl }}</a><br/>
+                                {{ answerTranslation.sourceText }}
+                            </p>   
+                        
+                            <div v-for="tranlatedText in answerTranslation.tranlatedTexts">
+                                <a href="#1" class="list-group-item list-group-item-action active" ng-show="displayResults1" ng-model="collapsed1" ng-click="setCollapsed(1)">
+                                        {{ tranlatedText.langname }} 
+                                </a>
+                                <p class="list-group-item">
+                                    <a v-bind:href="tranlatedText.fileurl">{{ tranlatedText.fileurl }}</a><br>
+                                    {{ tranlatedText.text }}
+                                    
+                                </p>
+                            </div>
+                        </div>
+                    </p>
+                    
+            
+                </div>
+            </div>
+
+            
+            
+
+            <div class="row">
+                <p> </p>
+            </div>
+
+            
+        </div>
+    </div>
+
+    <script type="text/javascript">
+
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                fileurl: null,
+                url_value: location.href,
+                file: null,
+                errorMessage: null,
+                answerClassifyImages: null,
+                loadingTranslation: false,
+                
+                answerTranslation: {
+                    errMsg: null,
+                    data: null
+                },
+                
+                tranlatedText: {
+                    langname: null,
+                    filename : null,
+                    text: null,
+                    fileurl: null
+                },
+               
+                displayResults1: false,
+                isError: false
+
+            },
+            methods: {
+                onFileChange(e) {
+                    this.file = e.target.files[0];
+                    this.fileurl = URL.createObjectURL(this.file);
+                    this.displayResults1 = false
+                    
+                    this.isError = false
+                    this.errorMessage = null
+                },
+
+                onTranslation(e) {
+
+                    this.translation();
+                },
+
+                async translation() {
+                    var url = "/upload"
+
+                    var params = new FormData();
+                    params.append('file', this.file);
+                    try {
+                        this.loadingTranslation = true
+
+                        const response = await axios.post(url, params)
+                        console.log('------Response------');
+                        console.log(response);
+                        console.log('------Response End------');
+
+                        this.answerTranslation = response.data.translation;
+                        
+
+                        if (response.data.errMsg == '') {
+                            
+                            this.isError = false;
+                            
+                        } else { 
+                            this.errorMessage = response.data.errMsg;
+                            this.isError = true;
+                        }
+                        console.log(response);
+                       
+
+                    } catch (e) {
+                        this.errorMessage = 'ERR:' + e;
+                        this.isError = true;
+                        console.log(this.errorMessage)
+                    } finally {
+                        this.loadingTranslation = false
+                        this.displayResults1 = true
+                    }
+                }
+            }
+        })
+
+    </script>
+
+</body>
+
+</html>

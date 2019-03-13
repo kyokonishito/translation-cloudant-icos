@@ -1,0 +1,28 @@
+{
+  "name": "MemoApp",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "@cloudant/cloudant": "^3.0.2",
+    "body-parser": "~1.18.3",
+    "config": "^3.0.1",
+    "dotenv": "^6.2.0",
+    "ejs": "~2.6.1",
+    "encoding-japanese": "^1.0.29",
+    "express": "~4.16.0",
+    "formidable": "^1.2.1",
+    "ibm-cos-sdk": "^1.4.4",
+    "method-override": "~3.0.0",
+    "moment": "~2.24.0",
+    "morgan": "~1.9.1",
+    "node-uuid": "~1.4.8",
+    "watson-developer-cloud": "^3.18.1"
+  },
+  "repository": {},
+  "engines": {
+    "node": "10.x"
+  }
+}

@@ -1,0 +1,12 @@
+applications:
+- name: <PUT YOUR APP NAME>
+memory: 256M
+command: node app.js
+path: .
+buildpack: sdk-for-nodejs
+env:
+  ICOS_ENDPOINT: <PUT YOUR ICOS_ENDPOINT>
+  ICOS_APIKEY: <PUT YOUR ICOS_APIKEY>
+  ICOS_RESOURCE_INSTANCE_ID: '<ICOS_RESOURCE_INSTANCE_ID>'
+  ICOS_BACKETNAME: <PUT YOUR ICOS_BACKETNAME>
+  CLOUDANT_DBNAME: fileinfo

@@ -1,0 +1,18 @@
+{
+    "language_translator": [
+        {
+            "credentials": {
+                "apikey": "<PUT YOUR API KEY FOR LANGUAGE TRANSLATOR>",
+                "url": "<PUT YOUR API KEY FOR LANGUAGE TRANSLATOR>"
+            }
+        }
+    ],
+    "cloudantNoSQLDB": [
+        {
+                "credentials": {
+                "apikey": "<PUT YOUR API KEY FOR CLOUDANT>",
+                "url": "<PUT YOUR API KEY FOR CLOUDANT>"
+            }
+        }
+    ]
+}
