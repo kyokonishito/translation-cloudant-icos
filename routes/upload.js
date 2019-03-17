@@ -14,6 +14,7 @@ var tools = require('./tools');
 const Encoding = require('encoding-japanese');
 
 const langmodels = [
+    {modelid : 'en-ar', source: 'English', target: 'Arabic'},
     {modelid : 'en-cs', source: 'English', target: 'Czech'},
     {modelid : 'en-da', source: 'English', target: 'Danish'},
     {modelid : 'en-de', source: 'English', target: 'German'},
@@ -21,6 +22,7 @@ const langmodels = [
     {modelid : 'en-fi', source: 'English', target: 'Finnish'},
     {modelid : 'en-fr', source: 'English', target: 'French'},
     {modelid : 'en-hi', source: 'English', target: 'Hindi'},
+    {modelid : 'en-hu', source: 'English', target: 'Hungarian'},
     {modelid : 'en-it', source: 'English', target: 'Italian'},
     //{modelid : 'en-ja', source: 'English', target: 'Japanese'},
     {modelid : 'en-ko', source: 'English', target: 'Korean'},
