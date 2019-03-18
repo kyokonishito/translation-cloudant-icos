@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <title>Watson Language Translator</title>
+    <title>Watson Lanugage Translator</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://unpkg.com/vue"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
@@ -16,7 +16,7 @@
             <div class="row">
                 <div class="col-sm-12">
                 <h2> <img src="ibmDeveloper.jpg" width="50" alt="IBM Developer" />
-                    Watson Language Translator
+                    Watson Lanugage Translator
                 </h2>
                 日本語のテキストが入ったファイルを各国語に翻訳します。<br/>
                 翻訳結果はIBM Cloud上のCloudant DBとIBM Cloud Object Storageに保存されます。
@@ -189,7 +189,10 @@
                 },
 
                 onTranslation(e) {
-                   this.translation();
+                    this.displayResults1 = false;
+                    this.displayResults2 = false;
+                    this.isError = false;
+                    this.translation();
                 },
 
                 onRtnTranslation(e) {
