@@ -11,11 +11,8 @@ Language Translator, Cloudant and IBM Cloud Object storageを使用したNode.js
 
 
 
-## 含まれるコンポーネント
-* [Node.js](https://nodejs.org/):
-Node.js® は8 JavaScript エンジン で動作する JavaScript 環境です。 Node.js は、軽量で効率的に動作する非同期型のイベント駆動モデルを採用しています。Node.js のパッケージ管理マネージャである npm は、世界で最も大きなオープンソースのライブラリエコシステムです。
-
-* [Cloud  Foundry SDK for Node.js](https://cloud.ibm.com/docs/runtimes/nodejs?topic=Nodejs-getting-started&locale=ja#getting-started):
+## 含まれる IBM Cloudコンポーネント
+* [Cloud Foundry SDK for Node.js](https://cloud.ibm.com/docs/runtimes/nodejs?topic=Nodejs-getting-started&locale=ja#getting-started):
 サーバー・サイド JavaScript® アプリを簡単に開発、デプロイ、および拡張できます
 
 * [Language Translator](https://www.ibm.com/watson/services/language-translator/):
@@ -26,6 +23,16 @@ Web、モバイル、IoT、サーバーレスの各アプリケーションの�
 
 * [IBM Cloud Object Storage](https://www.ibm.com/jp-ja/cloud/object-storage):
 柔軟でコスト効率が高く拡張性を備えた、非構造化データ向けのクラウド・ストレージ		
+
+## 使用している主なテクノロジー
+* [Node.js](https://nodejs.org/):
+Node.js® は8 JavaScript エンジン で動作する JavaScript 環境です。 Node.js は、軽量で効率的に動作する非同期型のイベント駆動モデルを採用しています。Node.js のパッケージ管理マネージャである npm は、世界で最も大きなオープンソースのライブラリエコシステムです。
+
+* [Vue.js](https://jp.vuejs.org/index.html) The Progressive JavaScript Framework
+
+* [bootswatch](https://bootswatch.com/) オーブンソースの[Bootstrap](https://getbootstrap.com/)のテーマ
+
+* [axios](https://github.com/axios/axios) ブラウザや node.js で動く Promise ベースのHTTPクライアント
 
 
 # 前提条件
@@ -131,12 +138,12 @@ env:
 $ ibmcloud login
 ```
 
-### 3. CloudFoundry 環境をターゲットに設定
+### 4. CloudFoundry 環境をターゲットに設定
 ターミナル(コマンドウィンドウ)にて以下のコマンドを実行してください:
 ```
 ibmcloud target --cf
 ```
-### 4. アプリケーションのプッシュ
+### 5. アプリケーションのプッシュ
 ターミナル(コマンドウィンドウ)にて以下のコマンドを実行してください:
 ```
 ibmcloud app push --no-start
@@ -144,7 +151,7 @@ ibmcloud app push --no-start
 `--no-start`はアプリケーションを開始させないオプションです。
 サービスとの接続が未作成のため、次の手順で接続を作成してから開始します。
 
-### 5. IBM Cloud Webコンソールでサービスの接続作成とアプリケーションの開始
+### 6. IBM Cloud Webコンソールでサービスの接続作成とアプリケーションの開始
 
 * [https://cloud.ibm.com/](https://cloud.ibm.com/)にアクセス
 * `ダッシュボード`　-> `リソースの要約`　-> `Cloud Foundry アプリ`をクリック
@@ -166,7 +173,7 @@ ibmcloud app push --no-start
 
 ## ローカル環境で動かす
 
-### 1. ``ローカル環境&IBM Cloud デプロイ 共通手順`` 1でクローンしたディレクトリにcdする
+### 1. ``ローカル環境&IBM Cloud デプロイ 共通手順`` `1`でクローンしたディレクトリにcdする
 ターミナル(コマンドウィンドウ)にて以下のコマンドを実行してください:
 ```
 $ cd translation-cloudant-icos.git
@@ -181,7 +188,7 @@ $ cp config/sample.default.json config/default.json
 ### 3. .envの作成
 ターミナル(コマンドウィンドウ)にて以下のコマンドを実行してください(windowsの場合はcopyコマンドを使用してください):
 ```
-$ cp csample.env .env
+$ cp sample.env .env
 ```
 
 ### 4. IBM Cloud Webコンソールでサービスの資格情報の取得、default.jsonの設定
@@ -235,7 +242,7 @@ CLOUDANT_DBNAME=fileinfo
 * `PUT YOUR ICOS_BACKETNAME`: 2.3で作成した固有のバケット名
 
 
-### 7. アプリケーションの起動
+### 6. アプリケーションの起動
 ターミナル(コマンドウィンドウ)にて以下のコマンドを実行してください:
 
 ```
@@ -243,7 +250,7 @@ $ npm install
 $ npm start
 ```
 
-アプリケーションが稼働したら、``http://localhost:3000/`` をクリックしてアプリケーションにアクセスしましょう。
+アプリケーションが稼働したら、Webブラウザーで``http://localhost:3000/`` にアクセスしてアプリケーションを確認しましょう。
 
 
 
