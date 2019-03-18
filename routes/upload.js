@@ -24,7 +24,7 @@ const langmodels = [
     {modelid : 'en-hi', source: 'English', target: 'Hindi'},
     {modelid : 'en-hu', source: 'English', target: 'Hungarian'},
     {modelid : 'en-it', source: 'English', target: 'Italian'},
-    //{modelid : 'en-ja', source: 'English', target: 'Japanese'},
+    {modelid : 'en-ja', source: 'English', target: 'Japanese'},
     {modelid : 'en-ko', source: 'English', target: 'Korean'},
     {modelid : 'en-nb', source: 'English', target: 'Norwegian Bokmal'},
     {modelid : 'en-nl', source: 'English', target: 'Dutch'},
@@ -59,6 +59,7 @@ var config = {
     ibmAuthEndpoint: 'https://iam.ng.bluemix.net/oidc/token',
     serviceInstanceId:  process.env.ICOS_RESOURCE_INSTANCE_ID
 };
+
 var cos = new ICOS.S3(config);
 async function doCreateObject2( bucket, key, file) {
     console.log('Creating object:' + key );
@@ -176,17 +177,22 @@ router.post('/', async function(req, res) {
             fileinfo_rec.tranlatedTexts[0].filename = setFileNameWithLang(fileinfo.file.name, 'ja-en');
             fileinfo_rec.tranlatedTexts[0].text = enStr;
             fileinfo_rec.tranlatedTexts[0].fileurl = process.env.ICOS_ENDPOINT + '/' + backetName + '/' + fileinfo_rec.tranlatedTexts[0].filename ;
+            fileinfo_rec.checkTextEn = enStr;
 
 
 
             transResults.forEach(function( value ) {
                 var tansinfo = {};
-                tansinfo.lang = value.modelid.split('-')[1];
-                tansinfo.langname = value.langname;
-                tansinfo.filename = setFileNameWithLang(fileinfo.file.name, value.modelid);
-                tansinfo.text = value.translations[0].translation;
-                tansinfo.fileurl = process.env.ICOS_ENDPOINT + '/' + backetName + '/' +  tansinfo.filename ;
-                fileinfo_rec.tranlatedTexts.push(tansinfo);
+                if(value.modelid.split('-')[1] == 'ja'){
+                    fileinfo_rec.checkTextJp = value.translations[0].translation;
+                } else {
+                    tansinfo.lang = value.modelid.split('-')[1];
+                    tansinfo.langname = value.langname;
+                    tansinfo.filename = setFileNameWithLang(fileinfo.file.name, value.modelid);
+                    tansinfo.text = value.translations[0].translation;
+                    tansinfo.fileurl = process.env.ICOS_ENDPOINT + '/' + backetName + '/' +  tansinfo.filename ;
+                    fileinfo_rec.tranlatedTexts.push(tansinfo);
+                } 
             });
 
             fileinfo_rec.created_timestamp = new Date().toISOString();

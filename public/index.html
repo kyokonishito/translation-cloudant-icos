@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <title>Snap & Translate</title>
+    <title>Watson Lanugage Translator</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://unpkg.com/vue"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
@@ -16,7 +16,7 @@
             <div class="row">
                 <div class="col-sm-12">
                 <h2> <img src="ibmDeveloper.jpg" width="50" alt="IBM Developer" />
-                    Watson Lanuage Translator
+                    Watson Lanugage Translator
                 </h2>
                 日本語のテキストが入ったファイルを各国語に翻訳します。<br/>
                 翻訳結果はIBM Cloud上のCloudant DBとIBM Cloud Object Storageに保存されます。
@@ -43,7 +43,7 @@
             <div class="row">
 
                 <button type="button" @click="onTranslation" class="btn btn-primary">翻訳ファイル作成</button>
-
+               
 
             </div>
 
@@ -67,6 +67,8 @@
                     </p>
 
                     <p v-show="displayResults1 && !isError">
+                        <br/>
+                        <button type="button" @click="onChkTranslation" v-show="displayResults1 && !isError" class="btn btn-primary">翻訳検証</button>
                         <div class="list-group" >                   
                             <a href="#1" class="list-group-item list-group-item-action active" v-show="displayResults1 && !isError" >
                                 翻訳されたテキスト
@@ -77,7 +79,7 @@
                             </p>   
                         
                             <div v-for="tranlatedText in answerTranslation.tranlatedTexts">
-                                <a href="#1" class="list-group-item list-group-item-action active" ng-show="displayResults1" ng-model="collapsed1" ng-click="setCollapsed(1)">
+                                <a href="#1" class="list-group-item list-group-item-action active" ng-show="displayResults1" >
                                         {{ tranlatedText.langname }} 
                                 </a>
                                 <p class="list-group-item">
@@ -91,6 +93,43 @@
                     
             
                 </div>
+
+                
+
+                <div v-show="displayResults2">                    
+
+                    <p v-show="displayResults2">
+                         <br/>
+                        <button type="button" @click="onRtnTranslation" v-show="displayResults2" class="btn btn-primary">翻訳に戻る</button>
+                        <div class="list-group" >                  
+                            <a href="#1" class="list-group-item list-group-item-action active" v-show="displayResults2" >
+                                翻訳されたテキスト
+                            </a>
+                            <p class="list-group-item" v-show="displayResults2" >
+                                {{ answerTranslation.sourceText }}
+                            </p>   
+
+                            <a href="#1" class="list-group-item list-group-item-action active" v-show="displayResults2" >
+                                英訳されたテキスト
+                            </a>
+                             <p class="list-group-item" v-show="displayResults2" >
+                                 {{ answerTranslation.checkTextEn }}
+                            </p> 
+                            
+                            <a href="#1" class="list-group-item list-group-item-action active" v-show="displayResults2" >
+                                英訳されたテキストの日本語訳
+                            </a>
+                             <p class="list-group-item" v-show="displayResults2" >
+                                 {{ answerTranslation.checkTextJp }}
+                            </p> 
+                        
+                            
+                        </div>
+                    </p>
+                    
+            
+                </div>
+
             </div>
 
             
@@ -130,6 +169,7 @@
                 },
                
                 displayResults1: false,
+                displayResults2: false,
                 isError: false
 
             },
@@ -143,9 +183,18 @@
                     this.errorMessage = null
                 },
 
-                onTranslation(e) {
+                onChkTranslation(e) {
+                    this.displayResults1 = false;
+                    this.displayResults2 = true;
+                },
 
-                    this.translation();
+                onTranslation(e) {
+                   this.translation();
+                },
+
+                onRtnTranslation(e) {
+                    this.displayResults1 = true;
+                    this.displayResults2 = false;
                 },
 
                 async translation() {
