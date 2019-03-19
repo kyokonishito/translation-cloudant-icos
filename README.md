@@ -158,7 +158,7 @@ ibmcloud app push --no-start
 ### 6. IBM Cloud Webコンソールでサービスの接続作成とアプリケーションの開始
 
 * [https://cloud.ibm.com/](https://cloud.ibm.com/)にアクセス
-* `ダッシュボード`　-> `リソースの要約`　-> `Cloud Foundry アプリ`をクリック
+* `ダッシュボード`　-> `リソースの要約`　-> `リソースの表示` -> `Cloud Foundry アプリ`をクリック
 *  2で設定したアプリケーションの名前をクリック
 * 左のメニューから`接続`をクリック
 * `接続の作成`をクリック
