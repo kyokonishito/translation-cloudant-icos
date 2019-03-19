@@ -207,6 +207,7 @@ router.post('/', async function(req, res) {
                         fileinfo_rec.tranlatedTexts.forEach(function( value ) {
                             cosFunc.push( doCreateObject(backetName, value.filename, value.text) );
                         });
+                        cosFunc.push( doCreateObject(backetName, fileinfo_rec.filename, orgStr) );
 
                         try {
                             let cosResults = await Promise.all(cosFunc);
