@@ -109,7 +109,7 @@ IBM Cloudにログインして必要なサービスを作成します。
 ### 1. ``ローカル環境&IBM Cloud デプロイ 共通手順`` `1`でクローンしたディレクトリにcdする
 ターミナル(コマンドウィンドウ)にて以下のコマンドを実行してください:
 ```
-$ cd translation-cloudant-icos.git
+$ cd translation-cloudant-icos
 ```
 ### 2. `manifest.yml` の編集
 
@@ -180,7 +180,7 @@ ibmcloud app push --no-start
 ### 1. ``ローカル環境&IBM Cloud デプロイ 共通手順`` `1`でクローンしたディレクトリにcdする
 ターミナル(コマンドウィンドウ)にて以下のコマンドを実行してください:
 ```
-$ cd translation-cloudant-icos.git
+$ cd translation-cloudant-icos
 ```
 
 ### 2. default.jsonの作成
