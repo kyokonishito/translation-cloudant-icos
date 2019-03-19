@@ -131,7 +131,7 @@ env:
 ```
 * `<PUT YOUR APP NAME>`: アプリケーションの名前、URLの最初の部分になるので、ユニークな名前になるようにする。スベースやアンダーバー、日本語は使用不可。
 
-* `<PUT YOUR ICOS_ENDPOINT>`: 2.3でコピーしたパブリックエンドポイントの値
+* `<PUT YOUR ICOS_ENDPOINT>`: 2.3でコピーしたパブリックエンドポイントの値、最初に`https://`をつける。例: `https://s3.us-south.cloud-object-storage.appdomain.cloud`
 * `<PUT YOUR ICOS_APIKEY>`: 2.3でコピーしたapikeyの値
 * `<ICOS_RESOURCE_INSTANCE_ID>`: 2.3でコピーしたresource_instance_idの値、元からある最初と最後のシングルクォーテーション(')はそのまま残す。
 * `<PUT YOUR ICOS_BACKETNAME>`: 2.3で作成した固有のバケット名
@@ -240,7 +240,7 @@ ICOS_BACKETNAME=PUT_YOUR_ICOS_BACKETNAME
 CLOUDANT_DBNAME=fileinfo
 ```
 
-* `PUT YOUR ICOS_ENDPOINT`: 2.3でコピーしたパブリックエンドポイントの値
+* `PUT YOUR ICOS_ENDPOINT`: 2.3でコピーしたパブリックエンドポイントの値。最初に`https://`をつける。例: `https://s3.us-south.cloud-object-storage.appdomain.cloud`
 * `PUT YOUR ICOS_APIKEY`: 2.3でコピーしたapikeyの値
 * `ICOS_RESOURCE_INSTANCE_ID`: 2.3でコピーしたresource_instance_idの値
 * `PUT YOUR ICOS_BACKETNAME`: 2.3で作成した固有のバケット名
