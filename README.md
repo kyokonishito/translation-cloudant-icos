@@ -65,6 +65,7 @@ IBM Cloudにログインして必要なサービスを作成します。
 * 右下にある ``作成`` ボタンをクリック 
 
 #### 2.2 Cloudantサービスとdbの作成
+(既に作成済みの場合は``Create Database``のみしてください)
 * [https://cloud.ibm.com/](https://cloud.ibm.com/)にアクセス
 * ``リソースの作成`` をクリック
 * ``Cloudant`` を検索
@@ -78,6 +79,7 @@ IBM Cloudにログインして必要なサービスを作成します。
 * `fileinfo`とテキストボックスに入力して``Create``をクリック（`fileinfo`という名前のdbが作成されます。）
 
 #### 2.3 IBM Cloud Object StorageサービスとBacketの作成
+(既に作成済みの場合はバケットの作成のみしてください)
 * [https://cloud.ibm.com/](https://cloud.ibm.com/)にアクセス
 * ``リソースの作成`` をクリック
 * ``IBM Cloud Object Storage`` を検索
