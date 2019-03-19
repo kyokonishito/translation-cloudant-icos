@@ -61,7 +61,7 @@ var config = {
 };
 
 var cos = new ICOS.S3(config);
-async function doCreateObject2( bucket, key, file) {
+async function doCreateObject( bucket, key, file) {
     console.log('Creating object:' + key );
     var parms = {
         Bucket: bucket,
@@ -205,7 +205,7 @@ router.post('/', async function(req, res) {
                     } else {
                         let cosFunc = []
                         fileinfo_rec.tranlatedTexts.forEach(function( value ) {
-                            cosFunc.push( doCreateObject2(backetName, value.filename, value.text) );
+                            cosFunc.push( doCreateObject(backetName, value.filename, value.text) );
                         });
 
                         try {
