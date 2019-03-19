@@ -72,6 +72,7 @@ IBM Cloudにログインして必要なサービスを作成します。
 * 希望のプランを指定します。
 * ``Available authentication methods:``に`Use both legacy credencials and IAM`を設定
 * 右下にある ``作成`` ボタンをクリック 
+* `リソース・リスト`が表示された場合、`リソース・リスト`->`サービス`の状況が`Provisioned`になったら、作成したCloudantのサービスをクリック(状況が変わらない場合は、リロードしてみる)
 * 作成完了したら``Launch Cloudant Dashboard``ボタンをクリック 
 * 上のメニューバーの``Create Database``をクリック
 * `fileinfo`とテキストボックスに入力して``Create``をクリック（`fileinfo`という名前のdbが作成されます。）
